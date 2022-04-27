@@ -1,11 +1,16 @@
 ## Documentation
 
+- [typescript, in 5 minutes](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
 - [Typescript basic types](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 - [Typescript interfaces vs types (more similar than you think)](https://stackoverflow.com/a/52682220)
 - [TypeScript Generics](https://www.freecodecamp.org/news/make-typescript-easy-using-basic-ts-generics/)
 - [Introduction Documentation to emotion](https://emotion.sh/docs/introduction)
 - [React Query overview by the creator](https://www.youtube.com/watch?v=seU46c6Jz7E)
 - [React Query and Typescript](https://tkdodo.eu/blog/react-query-and-type-script)
+
+## Supplemental Reading
+
+- [CSS in JS - An excellent summary of current solutions](https://github.com/andreipfeiffer/css-in-js)
 
 ## Getting Started
 
@@ -16,7 +21,7 @@
 
 - DO spend some time reading the above documentation, the required information to complete the tasks below are contained within.
 
-A not on this repos' setup:
+A note on this repos' setup:
 
 > I am not yet 100% convinced of the chosen libraries for this demo (emotion and react-query); thus, it is my hope to get your honest feedback from using them.
 
