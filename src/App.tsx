@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import { customersGetter, customersSetter } from "./api/CustomerApi";
+import { customersGetter, customersSetter } from "./api/Customer/CustomerApi";
 import { initialCustomers } from "./api/startingValues";
 import ContainerWrapper from "./components/ContainerWrapper";
 import Landing from "./pages/Landing";

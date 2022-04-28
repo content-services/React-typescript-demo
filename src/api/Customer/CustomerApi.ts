@@ -1,10 +1,11 @@
-import { callAPI } from "./apiUtilities";
+import { callAPI } from "../apiUtilities";
 
-export const choosableColors = ["red", "pink", "rebeccapurple", "grey"];
+export const choosableColors = ["red", "pink", "rebeccapurple", "grey"] as const;
+export type Color = typeof choosableColors[number]
 
 export interface Customer {
   name: string;
-  color: string; // TODO: Create a new Color type, I only want the "choosableColors" above to be permitted on Customers
+  color: Color;
   age: number;
   isCool: boolean;
 }
@@ -12,7 +13,7 @@ export interface Customer {
 export type Customers = Array<Customer>;
 
 //Local storage "DAO layer" Getter/Setters
-export const customersSetter = (customers: Customers | undefined) => {
+export const customersSetter = (customers: Customers) => {
   localStorage.setItem("customers", JSON.stringify(customers));
   return customers;
 };
@@ -32,8 +33,9 @@ export const addNewCustomer = (customer: Customer) => {
 //Super real API calls
 export const getCustomers = () => callAPI(customersGetter);
 
-export const postCustomers = (customers: Array<Customer> | undefined) => () =>
-  callAPI(() => customersSetter(customers));
+export const postCustomers = (customers: Customers) => () =>
+  callAPI<Customers>(() => customersSetter(customers));
 
 export const postNewCustomer = (customer: Customer) =>
-  callAPI(() => addNewCustomer(customer));
+  callAPI<Customers>(() => addNewCustomer(customer), 0.9);
+

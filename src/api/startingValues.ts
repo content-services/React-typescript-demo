@@ -1,66 +1,66 @@
-import { Customers } from "./CustomerApi";
+import { Customers } from "./Customer/CustomerApi";
 
 export const initialCustomers: Customers = [
-  {
-    name: "Agnes Carney",
-    isCool: true,
-    age: 38,
-    color: "pink",
-  },
-  {
-    name: "Nichole Le",
-    isCool: true,
-    age: 24,
-    color: "rebeccapurple",
-  },
-  {
-    name: "Vilma Schroeder",
-    isCool: true,
-    age: 28,
-    color: "red",
-  },
-  {
-    name: "Eve Bruce",
-    isCool: false,
-    age: 35,
-    color: "red",
-  },
-  {
-    name: "Delgado Albert",
-    isCool: true,
-    age: 25,
-    color: "pink",
-  },
-  {
-    name: "Annette Simon",
-    isCool: false,
-    age: 30,
-    color: "red",
-  },
-  {
-    name: "Margo Pitts",
-    isCool: true,
-    age: 32,
-    color: "grey",
-  },
-  {
-    name: "Garrett Coffey",
-    isCool: true,
-    age: 20,
-    color: "rebeccapurple",
-  },
-  {
-    name: "Belinda Bullock",
-    isCool: true,
-    age: 26,
-    color: "grey",
-  },
-  {
-    name: "Alvarez Christian",
-    isCool: true,
-    age: 30,
-    color: "rebeccapurple",
-  },
+  // {
+  //   name: "Agnes Carney",
+  //   isCool: true,
+  //   age: 38,
+  //   color: "pink",
+  // },
+  // {
+  //   name: "Nichole Le",
+  //   isCool: true,
+  //   age: 24,
+  //   color: "rebeccapurple",
+  // },
+  // {
+  //   name: "Vilma Schroeder",
+  //   isCool: true,
+  //   age: 28,
+  //   color: "red",
+  // },
+  // {
+  //   name: "Eve Bruce",
+  //   isCool: false,
+  //   age: 35,
+  //   color: "red",
+  // },
+  // {
+  //   name: "Delgado Albert",
+  //   isCool: true,
+  //   age: 25,
+  //   color: "pink",
+  // },
+  // {
+  //   name: "Annette Simon",
+  //   isCool: false,
+  //   age: 30,
+  //   color: "red",
+  // },
+  // {
+  //   name: "Margo Pitts",
+  //   isCool: true,
+  //   age: 32,
+  //   color: "grey",
+  // },
+  // {
+  //   name: "Garrett Coffey",
+  //   isCool: true,
+  //   age: 20,
+  //   color: "rebeccapurple",
+  // },
+  // {
+  //   name: "Belinda Bullock",
+  //   isCool: true,
+  //   age: 26,
+  //   color: "grey",
+  // },
+  // {
+  //   name: "Alvarez Christian",
+  //   isCool: true,
+  //   age: 30,
+  //   color: "rebeccapurple",
+  // },
   {
     name: "Castaneda Aguirre",
     isCool: false,

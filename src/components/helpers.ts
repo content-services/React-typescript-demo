@@ -26,6 +26,9 @@ font-size: 20px;
 &:hover:before {
   opacity: 1;
 };
+&:focus:before {
+  opacity: 1;
+};
 &:after {
   z-index: -1;
   content: '';
