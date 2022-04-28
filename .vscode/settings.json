@@ -1,0 +1,25 @@
+{
+  "typescriptHero.imports.stringQuoteStyle": "\"",
+  "typescriptHero.imports.organizeOnSave": true,
+  "typescriptHero.imports.ignoredFromRemoval": [
+    "jsx",
+    "tsx",
+    "ts",
+    "js"
+  ],
+  "eslint.format.enable": false,
+  "javascript.format.enable": true,
+  "editor.tabSize": 2,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+}

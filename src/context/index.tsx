@@ -1,0 +1,27 @@
+import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from "react";
+
+interface AppContextInterface {
+  darkmode: boolean;
+  setDarkmode: Dispatch<SetStateAction<boolean>>
+}
+
+export const AppContext = createContext<AppContextInterface | null>(null);
+
+type Props = { children: ReactNode };
+
+export const AppContextProvider = ({ children }: Props) => {
+  const [darkmode, setDarkmode] = useState<boolean>(false);
+
+  const contextValues = { darkmode, setDarkmode };
+  return (
+    <AppContext.Provider value={contextValues}>{children}</AppContext.Provider>
+  );
+};
+
+export const useAppContext = () => {
+  const store = useContext(AppContext);
+  if (store === null) {
+    throw new Error("Store cannot be null, please add a context provider");
+  }
+  return store;
+};

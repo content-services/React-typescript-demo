@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "ijs.emotionsnippets",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-typescript-next",
+    "esbenp.prettier-vscode",
+    "rvest.vs-code-prettier-eslint",
+    "2gua.rainbow-brackets",
+    "wayou.vscode-todo-highlight"
+  ]
+}
