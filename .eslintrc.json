@@ -1,51 +1,58 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true,
+    "jest": true
   },
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": "latest",
+    "ecmaVersion": 12,
     "sourceType": "module"
   },
   "plugins": [
     "react",
-    "@typescript-eslint"
+    "react-hooks",
+    "@typescript-eslint",
+    "prettier"
   ],
-  "rules": {
-    "react/display-name": "off",
-    "indent": [
-      "error",
-      2
-    ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "error",
-      "double"
-    ],
-    "semi": [
-      "error",
-      "always"
-    ],
-    "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off",
-    "prefer-arrow-callback": "error",
-    "arrow-body-style": "error"
-  },
   "settings": {
+    "import/resolver": {
+      "typescript": {}
+    },
     "react": {
       "version": "detect"
     }
+  },
+  "rules": {
+    "react/jsx-curly-brace-presence": [
+      "error",
+      {
+        "props": "never",
+        "children": "never"
+      }
+    ],
+    "arrow-body-style": [
+      "error",
+      "as-needed"
+    ],
+    "react/react-in-jsx-scope": "off",
+    "camelcase": "off",
+    "spaced-comment": "error",
+    "quotes": [
+      "warn",
+      "single"
+    ],
+    "no-duplicate-imports": "error",
+    "react/display-name": "off"
   }
 }

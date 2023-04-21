@@ -1,6 +1,6 @@
-import { callAPI } from "./apiUtilities";
+import { callAPI } from './apiUtilities';
 
-export const choosableColors = ["red", "pink", "rebeccapurple", "grey"];
+export const choosableColors = ['red', 'pink', 'rebeccapurple', 'grey'];
 
 export interface Customer {
   name: string;
@@ -11,14 +11,14 @@ export interface Customer {
 
 export type Customers = Array<Customer>;
 
-//Local storage "DAO layer" Getter/Setters
+// Local storage "DAO layer" Getter/Setters
 export const customersSetter = (customers: Customers | undefined) => {
-  localStorage.setItem("customers", JSON.stringify(customers));
+  localStorage.setItem('customers', JSON.stringify(customers));
   return customers;
 };
 
 export const customersGetter = (): Customers => {
-  const customers = localStorage.getItem("customers");
+  const customers = localStorage.getItem('customers');
   if (customers) return [...JSON.parse(customers)];
   return [];
 };
@@ -29,11 +29,10 @@ export const addNewCustomer = (customer: Customer) => {
   return customersSetter(customers);
 };
 
-//Super real API calls
+// Super real API calls
 export const getCustomers = () => callAPI(customersGetter);
 
 export const postCustomers = (customers: Array<Customer> | undefined) => () =>
   callAPI(() => customersSetter(customers));
 
-export const postNewCustomer = (customer: Customer) =>
-  callAPI(() => addNewCustomer(customer));
+export const postNewCustomer = (customer: Customer) => callAPI(() => addNewCustomer(customer));
