@@ -26,7 +26,7 @@
 
 ## Tasks
 
-1. Fix the <i>color</i> variable within the Customer interface found [here](/src/api/CustomerApi.ts#L7) by creating a "Color" type, that only allows the 4 choosable colors. You will have to follow the type around to fix associated components found: [here](src/pages/Landing/index.tsx#L98) and [here](src/components/ColoredTd.tsx#L4)
+1. Fix the <i>color</i> variable within the Customer interface found [here](/src/api/CustomerApi.ts#L7) by creating a "Color" type, that only allows the 4 choosable colors. You will have to follow the type around to fix associated components found: [here](src/pages/Landing/index.tsx#L98) and [here](src/components/ColoredTd.tsx#L4).
 
 2. Using `"react-jss"` and `"createUseStyles"` create a new `SnazzyButton` component (reference [ColoredTd](src/components/ColoredTd.tsx)), this new component will use the Patternfly Button component as a base and have a single additional prop called `isSnazzy`. When the button `isSnazzy`, apply the css string literal styling found [here](src/components/helpers.ts#L1). Replace the Submit Button component found [here](src/pages/Landing/index.tsx#L120), ensuring the new `SnazzyButton` has it's isSnazzy prop applied.
 
