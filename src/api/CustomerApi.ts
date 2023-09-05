@@ -2,9 +2,11 @@ import { callAPI } from './apiUtilities';
 
 export const choosableColors = ['red', 'pink', 'rebeccapurple', 'grey'];
 
+export type Color = 'red' | 'pink' | 'rebeccapurple' | 'grey'
+
 export interface Customer {
   name: string;
-  color: string; // TODO: Create a new Color type, I only want the "choosableColors" above to be permitted on Customers
+  color: Color;
   age: number;
   isCool: boolean;
 }
