@@ -95,11 +95,12 @@ export default () => {
               onToggle={() => setSelectToggle(!selectToggle)}
               isOpen={selectToggle}
               onSelect={(_e, value) => {
-                if (typeof value === 'string')
-                  // TODO: Fix this when creating the new Color type
-                  setNewUser({ ...newUser, color: value });
-                setSelectToggle(false);
-              }}
+                type Color = 'red' | 'pink' | 'rebeccapurple' | 'grey';
+                if (typeof value === 'string' && (value === 'red' || value === 'pink' || value === 'rebeccapurple' || value === 'grey')) {
+                  setNewUser({ ...newUser, color: value as Color });
+                  setSelectToggle(false);
+                }
+              }
               id='color'
               variant={SelectVariant.single}
               placeholderText='Select a color'
