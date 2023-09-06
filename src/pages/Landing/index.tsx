@@ -22,6 +22,7 @@ import { ColoredTd } from 'src/components/ColoredTd';
 import Loader from 'src/components/Loader';
 import { useAppContext } from 'src/middleware';
 
+
 const useStyles = createUseStyles({
   inlineText: {
     display: 'block',
@@ -95,11 +96,10 @@ export default () => {
               onToggle={() => setSelectToggle(!selectToggle)}
               isOpen={selectToggle}
               onSelect={(_e, value) => {
-                type Color = 'red' | 'pink' | 'rebeccapurple' | 'grey';
-                if (typeof value === 'string' && (value === 'red' || value === 'pink' || value === 'rebeccapurple' || value === 'grey')) {
-                  setNewUser({ ...newUser, color: value as Color });
-                  setSelectToggle(false);
-                }
+                if (typeof value === 'string')
+                  setNewUser({ ...newUser, color: value });
+                setSelectToggle(false);
+              }
               }
               id='color'
               variant={SelectVariant.single}
@@ -118,7 +118,7 @@ export default () => {
             onChange={(value) => setNewUser({ ...newUser, isCool: value })}
             isChecked={newUser.isCool}
           />
-          <Button type='submit'>Submit</Button>
+          <Button type='submit'>Snazzy</Button>
         </Form>
       </Modal>
       <Grid>
