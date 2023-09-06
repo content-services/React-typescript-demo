@@ -100,7 +100,7 @@ export default () => {
                   setNewUser({ ...newUser, color: value as Color });
                   setSelectToggle(false);
                 }
-              }
+              }}
               id='color'
               variant={SelectVariant.single}
               placeholderText='Select a color'
