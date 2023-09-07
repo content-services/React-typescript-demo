@@ -1,7 +1,10 @@
 import { Td, TdProps } from '@patternfly/react-table';
 import { createUseStyles } from 'react-jss';
+import { Color } from 'src/api/CustomerApi'
 
-const useStyles = (color: any) => // TODO: Use the new Color type to fix this.
+
+
+const useStyles = (color: Color) =>
   createUseStyles({
     withColor: {
       color,
@@ -9,7 +12,7 @@ const useStyles = (color: any) => // TODO: Use the new Color type to fix this.
   });
 
 export interface TdPropsWithColor extends Omit<TdProps, 'ref'> {
-  color: string; // TODO: Use the new Color type to fix this.
+  color: Color;
 }
 
 export const ColoredTd = ({ color, ...rest }: TdPropsWithColor) => {

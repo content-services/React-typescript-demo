@@ -22,6 +22,7 @@ import { ColoredTd } from 'src/components/ColoredTd';
 import Loader from 'src/components/Loader';
 import { useAppContext } from 'src/middleware';
 
+
 const useStyles = createUseStyles({
   inlineText: {
     display: 'block',
@@ -96,7 +97,6 @@ export default () => {
               isOpen={selectToggle}
               onSelect={(_e, value) => {
                 if (typeof value === 'string')
-                  // TODO: Fix this when creating the new Color type
                   setNewUser({ ...newUser, color: value });
                 setSelectToggle(false);
               }}
