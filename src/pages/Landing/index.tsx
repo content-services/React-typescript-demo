@@ -118,7 +118,7 @@ export default () => {
             onChange={(value) => setNewUser({ ...newUser, isCool: value })}
             isChecked={newUser.isCool}
           />
-          <Button type='submit'>Snazzy</Button>
+          <Button type='submit'>Button</Button>
         </Form>
       </Modal>
       <Grid>

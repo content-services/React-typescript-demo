@@ -1,20 +1,31 @@
-import { Td, TdProps } from '@patternfly/react-table';
+import React from 'react';
+import { Button, ButtonProps } from '@patternfly/react-core';
 import { createUseStyles } from 'react-jss';
 
 type Color = string;
 
 const useStyles = (color: Color) =>
   createUseStyles({
-    withColor: {
+    snazzyButton: {
       color,
+      backgroundColor: 'lightgray',
+      borderRadius: '5px',
+      padding: '10px 20px',
+      border: 'none',
+      cursor: 'pointer',
+      '&:hover': {
+        backgroundColor: 'gray',
+      },
     },
   });
 
-export interface TdPropsWithColor extends Omit<TdProps, 'ref'> {
+export interface SnazzyButtonProps extends Omit<ButtonProps, 'ref'> {
   color: Color;
 }
 
-export const ColoredTd = ({ color, ...rest }: TdPropsWithColor) => {
+export const SnazzyButton = ({ color, ...rest }: SnazzyButtonProps) => {
   const classes = useStyles(color)();
-  return <Td className={classes.withColor} {...rest} />;
+
+  return <Button className={classes.snazzyButton} {...rest} />;
 };
+
