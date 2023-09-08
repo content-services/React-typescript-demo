@@ -4,7 +4,7 @@ export const choosableColors = ['red', 'pink', 'rebeccapurple', 'grey'];
 
 export interface Customer {
   name: string;
-  color: string; // TODO: Create a new Color type, I only want the "choosableColors" above to be permitted on Customers
+  color: string; 
   age: number;
   isCool: boolean;
 }

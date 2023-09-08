@@ -20,6 +20,7 @@ import { useQuery } from 'react-query';
 import { choosableColors, Customer, getCustomers } from 'src/api/CustomerApi';
 import { ColoredTd } from 'src/components/ColoredTd';
 import Loader from 'src/components/Loader';
+import SnazzyButton from 'src/components/SnazzyButton';
 import { useAppContext } from 'src/middleware';
 
 const useStyles = createUseStyles({
@@ -117,7 +118,10 @@ export default () => {
             onChange={(value) => setNewUser({ ...newUser, isCool: value })}
             isChecked={newUser.isCool}
           />
-          <Button type='submit'>Submit</Button>
+          <SnazzyButton type="submit" color="blue" isSnazzy>
+            Submit
+          </SnazzyButton>
+
         </Form>
       </Modal>
       <Grid>
