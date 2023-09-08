@@ -33,5 +33,6 @@ export const snazzyButtonStyle = {
     color: 'white!important',
     transform: 'scale(1.05)',
     willChange: 'transform',
+    
   },
 };
