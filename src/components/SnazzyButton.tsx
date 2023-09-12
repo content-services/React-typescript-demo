@@ -3,21 +3,21 @@ import { Button, ButtonProps } from '@patternfly/react-core';
 import { ColoredTd } from './ColoredTd';
 
 type SnazzyButtonProps = {
-  color: string;
+
   isSnazzy: boolean;
-  customStyle?: string;
+
 } & ButtonProps;
 
-const SnazzyButton: React.FC<SnazzyButtonProps> = ({ color, isSnazzy, customStyle, ...rest }) => {
+const SnazzyButton: React.FC<SnazzyButtonProps> = ({ color, isSnazzy, ...rest }) => {
   if (isSnazzy) {
     return (
-      <ColoredTd color={color}>
-        <Button style={customStyle as CSSProperties} {...rest} />
-      </ColoredTd>
+
+      <Button style={color as CSSProperties} {...rest} />
+
     );
   }
 
-  return <Button style={customStyle as CSSProperties} {...rest} />;
+  return <Button style={color as CSSProperties} {...rest} />;
 };
 
 export default SnazzyButton;

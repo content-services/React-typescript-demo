@@ -118,7 +118,7 @@ export default () => {
             onChange={(value) => setNewUser({ ...newUser, isCool: value })}
             isChecked={newUser.isCool}
           />
-          <SnazzyButton type="submit" color="blue" isSnazzy>
+          <SnazzyButton isSnazzy>
             Submit
           </SnazzyButton>
         </Form>
