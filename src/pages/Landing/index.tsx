@@ -16,22 +16,15 @@ import {
 import { Caption, TableComposable, Tbody, Th, Thead, Tr } from '@patternfly/react-table';
 import { FormEvent, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useQuery, QueryClient, QueryClientProvider, } from 'react-query';
+import { useQuery } from 'react-query';
 import { choosableColors, Customer, getCustomers } from 'src/api/CustomerApi';
 import { ColoredTd } from 'src/components/ColoredTd';
 import Loader from 'src/components/Loader';
 import { useAppContext } from 'src/middleware';
 import ReactDOM from 'react-dom';
-import App from './App';
 
-const queryClient = new QueryClient();
 
-ReactDOM.render(
-  <QueryClientProvider client={queryClient}>
-    <App />
-  </QueryClientProvider>,
-  document.getElementById('root')
-);
+
 const useStyles = createUseStyles({
   inlineText: {
     display: 'block',
@@ -70,9 +63,16 @@ export default () => {
         </Button>
       </GridItem>
       <GridItem sm={6}>
-        <Button onClick={() => setIsModalOpen(true)} variant='secondary'>
+        <Button
+          onClick={() => {
+
+            mutate({});
+          }}
+          variant='secondary'
+        >
           Add New Customer
         </Button>
+
       </GridItem>
       <Modal
         variant={ModalVariant.small}
