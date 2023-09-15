@@ -1,4 +1,5 @@
 import { callAPI } from './apiUtilities';
+import { useMutation } from 'react-query';
 
 export const choosableColors = ['red', 'pink', 'rebeccapurple', 'grey'];
 
@@ -38,3 +39,8 @@ export const postCustomers = (customers: Array<Customer> | undefined) => () =>
   callAPI(() => customersSetter(customers));
 
 export const postNewCustomer = (customer: Customer) => callAPI(() => addNewCustomer(customer));
+
+const addNewCustomer = async () => {
+  const response = await yourMutationApiCall();
+  return response.data;
+};

@@ -61,7 +61,10 @@ export default () => {
         </Button>
       </GridItem>
       <GridItem sm={6}>
-        <Button onClick={() => setIsModalOpen(true)} variant='secondary'>
+        <Button
+          onClick={handleAddNewCustomer}
+          variant='secondary'
+        >
           Add New Customer
         </Button>
       </GridItem>
