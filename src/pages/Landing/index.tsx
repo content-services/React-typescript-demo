@@ -16,7 +16,7 @@ import {
 import { Caption, TableComposable, Tbody, Th, Thead, Tr } from '@patternfly/react-table';
 import { FormEvent, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useQuery } from 'react-query';
+import { useQuery, useMutation } from 'react-query';
 import { choosableColors, Customer, getCustomers } from 'src/api/CustomerApi';
 import { ColoredTd } from 'src/components/ColoredTd';
 import Loader from 'src/components/Loader';
@@ -64,14 +64,16 @@ export default () => {
       </GridItem>
       <GridItem sm={6}>
         <Button
-          onClick={() => {
 
-            mutate({});
-          }}
+          onClick={handleAddNewCustomer}
           variant='secondary'
         >
           Add New Customer
         </Button>
+        );
+
+
+        export default YourComponent;
 
       </GridItem>
       <Modal
