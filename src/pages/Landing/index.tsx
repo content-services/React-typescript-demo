@@ -72,9 +72,6 @@ export default () => {
         </Button>
         );
 
-
-        export default YourComponent;
-
       </GridItem>
       <Modal
         variant={ModalVariant.small}
