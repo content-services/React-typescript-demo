@@ -1,23 +1,24 @@
-import React, { CSSProperties } from 'react';
-import { Button, ButtonProps } from '@patternfly/react-core';
-import { ColoredTd } from './ColoredTd';
-
-type SnazzyButtonProps = {
-
+import React from 'react';
+import { createUseStyles } from 'react-jss';
+import snazzyButtonStyling from './snazzyButtonStyling';
+interface SnazzyButtonProps {
   isSnazzy: boolean;
 
-} & ButtonProps;
+}
 
-const SnazzyButton: React.FC<SnazzyButtonProps> = ({ color, isSnazzy, ...rest }) => {
-  if (isSnazzy) {
-    return (
 
-      <Button style={color as CSSProperties} {...rest} />
+const useStyles = createUseStyles(snazzyButtonStyling);
 
-    );
-  }
+const SnazzyButton: React.FC<SnazzyButtonProps> = ({ isSnazzy, ...rest }) => {
 
-  return <Button style={color as CSSProperties} {...rest} />;
+  const classes = useStyles();
+
+
+  return (
+    <button className={isSnazzy ? classes.snazzyButton : classes.normalButton} {...rest}>
+      { }
+    </button>
+  );
 };
 
 export default SnazzyButton;
