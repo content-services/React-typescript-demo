@@ -3,36 +3,28 @@ import { createUseStyles } from 'react-jss';
 import { snazzyButtonStyle } from './helpers';
 
 
-interface ButtonProps {
-  children: React.ReactNode;
-}
+
 
 const styles = {
-  snazzyButton: {
+  snazzyButton: snazzyButtonStyle
 
-  }
+
 };
 
 const useStyles = createUseStyles(styles);
 
 interface SnazzyButtonProps {
   isSnazzy: boolean;
+  children: React.ReactNode;
 }
 
 const SnazzyButton: React.FC<SnazzyButtonProps> = ({ isSnazzy, children, ...rest }) => {
   const classes = useStyles();
 
-  const classNames = {
-    [classes.snazzyButton]: isSnazzy,
 
-  };
-
-  const className = Object.keys(classNames)
-    .filter((key) => classNames[key])
-    .join(' ');
 
   return (
-    <button className={className} {...rest}>
+    <button className={isSnazzy ? classes.snazzyButton : ' '} {...rest}>
       {children}
     </button>
   );
