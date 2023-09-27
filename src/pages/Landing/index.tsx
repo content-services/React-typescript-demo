@@ -52,7 +52,7 @@ export default () => {
   };
 
   const columnHeaders = ['Name', 'Age', 'Is Cool'];
-
+  d
   if (isLoading) return <Loader />;
   return (
     <Grid>
