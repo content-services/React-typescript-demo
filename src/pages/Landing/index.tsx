@@ -22,7 +22,7 @@ import { ColoredTd } from 'src/components/ColoredTd';
 import Loader from 'src/components/Loader';
 import SnazzyButton from 'src/components/SnazzyButton';
 import { useAppContext } from 'src/middleware';
-
+import axios from 'axios';
 
 const useStyles = createUseStyles({
   inlineText: {
@@ -52,104 +52,111 @@ export default () => {
   };
 
   const columnHeaders = ['Name', 'Age', 'Is Cool'];
-  d
-  if (isLoading) return <Loader />;
-  return (
-    <Grid>
-      <GridItem sm={6}>
-        <Button onClick={() => setDarkmode(!darkmode)} variant='secondary'>
-          {darkmode ? 'LightMode' : 'DarkMode'}
-        </Button>
-      </GridItem>
-      <GridItem sm={6}>
-        <Button onClick={() => setIsModalOpen(true)} variant='secondary'>
-          Add New Customer
-        </Button>
-      </GridItem>
-      <Modal
-        variant={ModalVariant.small}
-        title='Add Customer'
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      >
-        <Form onSubmit={onSubmit}>
-          <Grid className={classes.inlineText}>
-            <Text>Name</Text>
-            <TextInput
-              onChange={(value) => setNewUser({ ...newUser, name: value })}
-              value={newUser.name || ''}
-              id='name'
-              type='text'
-            />
-          </Grid>
-          <Grid className={classes.inlineText}>
-            <Text>Age</Text>
-            <TextInput
-              onChange={(value) => setNewUser({ ...newUser, age: Number(value) })}
-              value={newUser.age || ''}
-              id='age'
-              type='number'
-            />
-          </Grid>
-          <Grid className={classes.inlineText}>
-            <Text>Color</Text>
-            <Select
-              onToggle={() => setSelectToggle(!selectToggle)}
-              isOpen={selectToggle}
-              onSelect={(_e, value) => {
-                if (typeof value === 'string')
-                  setNewUser({ ...newUser, color: value });
-                setSelectToggle(false);
-              }}
-              id='color'
-              variant={SelectVariant.single}
-              placeholderText='Select a color'
-              selections={newUser?.color}
-              direction={SelectDirection.up}
-            >
-              {choosableColors.map((color: string, index) => (
-                <SelectOption style={{ color }} key={index} value={color} />
-              ))}
-            </Select>
-          </Grid>
-          <Checkbox
-            label='Is this person cool?'
-            id='isCool'
-            onChange={(value) => setNewUser({ ...newUser, isCool: value })}
-            isChecked={newUser.isCool}
-          />
-          <SnazzyButton isSnazzy>
-            Submit
-          </SnazzyButton>
-        </Form>
-      </Modal>
+  export const fetchCustomers = async () => {
+    const response = await axios.get('src/api/CustomerApi');
+    return response.data;
+  };
+
+  export const useCustomersQuery = () => {
+    return useQuery('customers', fetchCustomers);
+
+    if (isLoading) return <Loader />;
+    return (
       <Grid>
-        <TableComposable aria-label='Simple table' variant='compact'>
-          <Caption>Here is a list of your customers:</Caption>
-          <Thead>
-            <Tr>
-              {columnHeaders.map((columnHeader) => (
-                <Th key={columnHeader}>{columnHeader}</Th>
-              ))}
-            </Tr>
-          </Thead>
-          <Tbody>
-            {data?.map(({ name, age, color, isCool }, key: number) => (
-              <Tr key={name + key}>
-                <ColoredTd color={color} dataLabel='name'>
-                  {name}
-                </ColoredTd>
-                <ColoredTd color={color} dataLabel='age'>
-                  {age}
-                </ColoredTd>
-                <ColoredTd color={color} dataLabel='isCool'>
-                  {isCool ? 'Yup' : 'Totally Not!'}
-                </ColoredTd>
+        <GridItem sm={6}>
+          <Button onClick={() => setDarkmode(!darkmode)} variant='secondary'>
+            {darkmode ? 'LightMode' : 'DarkMode'}
+          </Button>
+        </GridItem>
+        <GridItem sm={6}>
+          <Button onClick={() => setIsModalOpen(true)} variant='secondary'>
+            Add New Customer
+          </Button>
+        </GridItem>
+        <Modal
+          variant={ModalVariant.small}
+          title='Add Customer'
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        >
+          <Form onSubmit={onSubmit}>
+            <Grid className={classes.inlineText}>
+              <Text>Name</Text>
+              <TextInput
+                onChange={(value) => setNewUser({ ...newUser, name: value })}
+                value={newUser.name || ''}
+                id='name'
+                type='text'
+              />
+            </Grid>
+            <Grid className={classes.inlineText}>
+              <Text>Age</Text>
+              <TextInput
+                onChange={(value) => setNewUser({ ...newUser, age: Number(value) })}
+                value={newUser.age || ''}
+                id='age'
+                type='number'
+              />
+            </Grid>
+            <Grid className={classes.inlineText}>
+              <Text>Color</Text>
+              <Select
+                onToggle={() => setSelectToggle(!selectToggle)}
+                isOpen={selectToggle}
+                onSelect={(_e, value) => {
+                  if (typeof value === 'string')
+                    setNewUser({ ...newUser, color: value });
+                  setSelectToggle(false);
+                }}
+                id='color'
+                variant={SelectVariant.single}
+                placeholderText='Select a color'
+                selections={newUser?.color}
+                direction={SelectDirection.up}
+              >
+                {choosableColors.map((color: string, index) => (
+                  <SelectOption style={{ color }} key={index} value={color} />
+                ))}
+              </Select>
+            </Grid>
+            <Checkbox
+              label='Is this person cool?'
+              id='isCool'
+              onChange={(value) => setNewUser({ ...newUser, isCool: value })}
+              isChecked={newUser.isCool}
+            />
+            <SnazzyButton isSnazzy>
+              Submit
+            </SnazzyButton>
+          </Form>
+        </Modal>
+        <Grid>
+          <TableComposable aria-label='Simple table' variant='compact'>
+            <Caption>Here is a list of your customers:</Caption>
+            <Thead>
+              <Tr>
+                {columnHeaders.map((columnHeader) => (
+                  <Th key={columnHeader}>{columnHeader}</Th>
+                ))}
               </Tr>
-            ))}
-          </Tbody>
-        </TableComposable>
+            </Thead>
+            <Tbody>
+              {data?.map(({ name, age, color, isCool }, key: number) => (
+                <Tr key={name + key}>
+                  <ColoredTd color={color} dataLabel='name'>
+                    {name}
+                  </ColoredTd>
+                  <ColoredTd color={color} dataLabel='age'>
+                    {age}
+                  </ColoredTd>
+                  <ColoredTd color={color} dataLabel='isCool'>
+                    {isCool ? 'Yup' : 'Totally Not!'}
+                  </ColoredTd>
+                </Tr>
+              ))}
+            </Tbody>
+          </TableComposable>
+        </Grid>
       </Grid>
-    </Grid>
-  );
-};
+    );
+  };
