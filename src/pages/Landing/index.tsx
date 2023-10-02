@@ -16,13 +16,13 @@ import {
 import { Caption, TableComposable, Tbody, Th, Thead, Tr } from '@patternfly/react-table';
 import { FormEvent, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useQuery, useMutation, useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
 import { choosableColors, Customer, getCustomers } from 'src/api/CustomerApi';
 import { ColoredTd } from 'src/components/ColoredTd';
 import Loader from 'src/components/Loader';
 import SnazzyButton from 'src/components/SnazzyButton';
 import { useAppContext } from 'src/middleware';
-
+import axios from 'axios;'
 
 const useStyles = createUseStyles({
   inlineText: {
@@ -45,35 +45,22 @@ export default () => {
     // TODO: Stretch - Use the options object to handle errors.
   );
 
-  const onSubmit = (e: FormEvent<Element>) => {
+  const onSubmit = async (e: FormEvent<Element>) => {
     e.preventDefault();
-    setNewUser({ isCool: false });
-    setIsModalOpen(false);
-  };
 
-  const columnHeaders = ['Name', 'Age', 'Is Cool'];
-  const openModalMutation = async () => {
-    setIsModalOpen(true);
-    const queryClient = useQueryClient();
+    const apiUrl = 'http://localhost:3000/';
+    const response = await axios.post(apiUrl, { isCool: false });
 
-    const { mutate } = useMutation(openModalMutation, {
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onMutate: () => {
+    try {
+      console.log('API Response:', response.data);
 
-      },
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onSuccess: () => {
-      },
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onError: () => {
-      },
-    });
-    return (
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error('API Error:', error);
+    };
 
-      <Button onClick={() => mutate()} variant='secondary'>
-        Add New Customer
-      </Button>
-    )
+    const columnHeaders = ['Name', 'Age', 'Is Cool'];
+
     if (isLoading) return <Loader />;
     return (
       <Grid>
@@ -83,7 +70,9 @@ export default () => {
           </Button>
         </GridItem>
         <GridItem sm={6}>
-
+          <Button onClick={() => setIsModalOpen(true)} variant='secondary'>
+            Add New Customer
+          </Button>
         </GridItem>
         <Modal
           variant={ModalVariant.small}
@@ -172,4 +161,3 @@ export default () => {
       </Grid>
     );
   };
-}
