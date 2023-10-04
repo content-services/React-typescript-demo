@@ -17,7 +17,7 @@ import { Caption, TableComposable, Tbody, Th, Thead, Tr } from '@patternfly/reac
 import { FormEvent, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useQuery } from 'react-query';
-import { choosableColors, Customer, getCustomers } from 'src/api/CustomerApi';
+import { addNewCustomer, choosableColors, Customer, customersGetter, customersSetter, getCustomers, } from 'src/api/CustomerApi';
 import { ColoredTd } from 'src/components/ColoredTd';
 import Loader from 'src/components/Loader';
 import SnazzyButton from 'src/components/SnazzyButton';
@@ -47,8 +47,10 @@ export default () => {
 
   const onSubmit = (e: FormEvent<Element>) => {
     e.preventDefault();
+    addNewCustomer(newUser as Customer)
     setNewUser({ isCool: false });
     setIsModalOpen(false);
+
   };
 
   const columnHeaders = ['Name', 'Age', 'Is Cool'];

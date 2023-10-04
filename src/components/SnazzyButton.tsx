@@ -12,13 +12,14 @@ const useStyles = createUseStyles(styles);
 interface SnazzyButtonProps {
   isSnazzy: boolean;
   children: React.ReactNode;
+
 }
 
 const SnazzyButton: React.FC<SnazzyButtonProps> = ({ isSnazzy, children, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <Button className={isSnazzy ? classes.snazzyButton : ''} {...rest}>
+    <Button type="submit" className={isSnazzy ? classes.snazzyButton : ''} {...rest}>
       {children}
     </Button>
   );
