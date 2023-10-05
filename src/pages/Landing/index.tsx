@@ -16,8 +16,8 @@ import {
 import { Caption, TableComposable, Tbody, Th, Thead, Tr } from '@patternfly/react-table';
 import { FormEvent, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useQuery } from 'react-query';
-import { choosableColors, Customer, getCustomers } from 'src/api/CustomerApi';
+import { useQuery, useQueryClient } from 'react-query';
+import { addNewCustomer, choosableColors, Customer, customersGetter, customersSetter, getCustomers, } from 'src/api/CustomerApi';
 import { ColoredTd } from 'src/components/ColoredTd';
 import Loader from 'src/components/Loader';
 import SnazzyButton from 'src/components/SnazzyButton';
@@ -36,7 +36,7 @@ export default () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newUser, setNewUser] = useState<Partial<Customer>>({ isCool: false });
   const [selectToggle, setSelectToggle] = useState(false);
-  // const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
 
   // Queries
   const { isLoading, data } = useQuery(
@@ -47,8 +47,10 @@ export default () => {
 
   const onSubmit = (e: FormEvent<Element>) => {
     e.preventDefault();
+    addNewCustomer(newUser as Customer)
     setNewUser({ isCool: false });
     setIsModalOpen(false);
+    queryClient.invalidateQueries('customers');
   };
 
   const columnHeaders = ['Name', 'Age', 'Is Cool'];
