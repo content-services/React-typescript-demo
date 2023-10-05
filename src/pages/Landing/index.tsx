@@ -50,7 +50,7 @@ export default () => {
     addNewCustomer(newUser as Customer)
     setNewUser({ isCool: false });
     setIsModalOpen(false);
-    queryClient.invalidateQueries('CustomerQuery');
+    queryClient.invalidateQueries('addNewCustomer');
   };
 
   const columnHeaders = ['Name', 'Age', 'Is Cool'];
