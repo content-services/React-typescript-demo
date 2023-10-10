@@ -6,7 +6,7 @@ interface Customer {
 
   isCool: boolean;
 }
-
+.
 async function getCustomers() {
   getCustomers
 }
