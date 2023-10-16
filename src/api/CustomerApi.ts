@@ -5,6 +5,8 @@ export const choosableColors = ['red', 'pink', 'rebeccapurple', 'grey'];
 export type Color = typeof choosableColors[number];
 
 export interface Customer {
+  id: Key | null | undefined;
+  email: ReactNode;
   name: string;
   color: Color; 
   age: number;

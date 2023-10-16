@@ -16,8 +16,13 @@ import {
 import { Caption, TableComposable, Tbody, Th, Thead, Tr } from '@patternfly/react-table';
 import { FormEvent, useState } from 'react';
 import { createUseStyles } from 'react-jss';
+<<<<<<< HEAD
 import { useQuery, useQueryClient } from 'react-query';
 import { addNewCustomer, choosableColors, Customer, customersGetter, customersSetter, getCustomers, } from 'src/api/CustomerApi';
+=======
+import { useQuery } from 'react-query';
+import { choosableColors, Customer, getCustomers, customersGetter, postCustomers } from 'src/api/CustomerApi';
+>>>>>>> d41d134 (WHat I have so far)
 import { ColoredTd } from 'src/components/ColoredTd';
 import Loader from 'src/components/Loader';
 import SnazzyButton from 'src/components/SnazzyButton';
