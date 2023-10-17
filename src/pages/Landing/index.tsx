@@ -14,7 +14,7 @@ import {
   TextInput,
 } from '@patternfly/react-core';
 import { Caption, TableComposable, Tbody, Th, Thead, Tr } from '@patternfly/react-table';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, Key } from 'react';
 import { createUseStyles } from 'react-jss';
 <<<<<<< HEAD
 import { useQuery, useQueryClient } from 'react-query';

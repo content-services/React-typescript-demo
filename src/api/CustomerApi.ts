@@ -1,3 +1,4 @@
+import { Key, ReactNode } from 'react';
 import { callAPI } from './apiUtilities';
 
 export const choosableColors = ['red', 'pink', 'rebeccapurple', 'grey'];
@@ -31,6 +32,17 @@ export const addNewCustomer = (customer: Customer) => {
   const customers = customersGetter();
   customers.push(customer);
   return customersSetter(customers);
+};
+
+
+export const deleteCustomer = (customerId: Key) => {
+  const customers = customersGetter();
+  const index = customers.findIndex((customer) => customer.id === customerId);
+
+  if (index !== -1) {
+    customers.splice(index, 1);
+    customersSetter(customers);
+  }
 };
 
 // Super real API calls
