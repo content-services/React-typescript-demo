@@ -13,16 +13,11 @@ import {
   Text,
   TextInput,
 } from '@patternfly/react-core';
-import { Caption, TableComposable, Tbody, Th, Thead, Tr } from '@patternfly/react-table';
+import { Caption, TableComposable, Tbody, Td, Th, Thead, Tr } from '@patternfly/react-table';
 import { FormEvent, useState, Key } from 'react';
 import { createUseStyles } from 'react-jss';
-<<<<<<< HEAD
 import { useQuery, useQueryClient } from 'react-query';
 import { addNewCustomer, choosableColors, Customer, customersGetter, customersSetter, getCustomers, } from 'src/api/CustomerApi';
-=======
-import { useQuery } from 'react-query';
-import { choosableColors, Customer, getCustomers, customersGetter, postCustomers } from 'src/api/CustomerApi';
->>>>>>> d41d134 (WHat I have so far)
 import { ColoredTd } from 'src/components/ColoredTd';
 import Loader from 'src/components/Loader';
 import SnazzyButton from 'src/components/SnazzyButton';
@@ -61,6 +56,10 @@ export default () => {
   const columnHeaders = ['Name', 'Age', 'Is Cool'];
 
   if (isLoading) return <Loader />;
+  function handleDelete(name: any): void {
+    throw new Error('Function not implemented.');
+  }
+
   return (
     <Grid>
       <GridItem sm={6}>
@@ -138,6 +137,7 @@ export default () => {
               {columnHeaders.map((columnHeader) => (
                 <Th key={columnHeader}>{columnHeader}</Th>
               ))}
+              <Th key="kebab-menu"></Th> { }
             </Tr>
           </Thead>
           <Tbody>
@@ -152,6 +152,12 @@ export default () => {
                 <ColoredTd color={color} dataLabel='isCool'>
                   {isCool ? 'Yup' : 'Totally Not!'}
                 </ColoredTd>
+                <Td key={`kebab-menu-${key}`}>
+                  { }
+                  <div>
+                    <button onClick={() => handleDelete(name)}>Delete</button>
+                  </div>
+                </Td>
               </Tr>
             ))}
           </Tbody>
