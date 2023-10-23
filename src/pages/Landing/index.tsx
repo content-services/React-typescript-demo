@@ -61,6 +61,7 @@ export default () => {
       const customers = customersGetter();
       const index = customers.findIndex((customer) => customer.name === customerId);
 
+
       if (index !== -1) {
         const updatedCustomers = [...customers];
         updatedCustomers.splice(index, 1);
@@ -70,8 +71,10 @@ export default () => {
 
     try {
       deleteCustomer();
+      queryClient.invalidateQueries('customers');
     } catch (error) {
       console.error('An error occurred while deleting the customer:', error);
+
     }
   }
 
@@ -153,7 +156,7 @@ export default () => {
               {columnHeaders.map((columnHeader) => (
                 <Th key={columnHeader}>{columnHeader}</Th>
               ))}
-              <Th key="kebab-menu"></Th> { }
+              <Th key="kebab-menu"></Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -169,7 +172,7 @@ export default () => {
                   {isCool ? 'Yup' : 'Totally Not!'}
                 </ColoredTd>
                 <Td key={`kebab-menu-${key}`}>
-                  { }
+
                   <div>
                     <button onClick={() => handleDelete(name)}>Delete</button>
                   </div>
