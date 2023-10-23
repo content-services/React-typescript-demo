@@ -14,7 +14,7 @@ import {
   TextInput,
 } from '@patternfly/react-core';
 import { Caption, TableComposable, Tbody, Td, Th, Thead, Tr } from '@patternfly/react-table';
-import { FormEvent, useState, Key } from 'react';
+import { FormEvent, Key, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useQuery, useQueryClient } from 'react-query';
 import { addNewCustomer, choosableColors, Customer, customersGetter, customersSetter, getCustomers, } from 'src/api/CustomerApi';
@@ -56,9 +56,25 @@ export default () => {
   const columnHeaders = ['Name', 'Age', 'Is Cool'];
 
   if (isLoading) return <Loader />;
-  function handleDelete(name: any): void {
-    throw new Error('Function not implemented.');
+  function handleDelete(customerId: any): void {
+    const deleteCustomer = () => {
+      const customers = customersGetter();
+      const index = customers.findIndex((customer) => customer.name === customerId);
+
+      if (index !== -1) {
+        const updatedCustomers = [...customers];
+        updatedCustomers.splice(index, 1);
+        customersSetter(updatedCustomers);
+      }
+    };
+
+    try {
+      deleteCustomer();
+    } catch (error) {
+      console.error('An error occurred while deleting the customer:', error);
+    }
   }
+
 
   return (
     <Grid>
