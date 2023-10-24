@@ -79,6 +79,13 @@ export default () => {
   }
 
 
+  function handleEdit(name: any): void {
+    throw new Error('Function not implemented.');
+    const handleEdit = (name) => {
+      console.log(`Editing ${name}`);
+    };
+  }
+
   return (
     <Grid>
       <GridItem sm={6}>
@@ -172,9 +179,12 @@ export default () => {
                   {isCool ? 'Yup' : 'Totally Not!'}
                 </ColoredTd>
                 <Td key={`kebab-menu-${key}`}>
-
-                  <div>
-                    <button onClick={() => handleDelete(name)}>Delete</button>
+                  <div className="dropdown">
+                    <div className="dropdown-content">
+                      <button className="dropbtn"></button>
+                      <button onClick={() => handleDelete(name)}>Delete</button>
+                      <button onClick={() => handleEdit(name)}>Edit</button>
+                    </div>
                   </div>
                 </Td>
               </Tr>
