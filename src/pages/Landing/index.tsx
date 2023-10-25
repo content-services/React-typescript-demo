@@ -13,7 +13,7 @@ import {
   Text,
   TextInput,
 } from '@patternfly/react-core';
-import { Caption, TableComposable, Tbody, Td, Th, Thead, Tr } from '@patternfly/react-table';
+import { ActionsColumn, Caption, TableComposable, Tbody, Td, Th, Thead, Tr } from '@patternfly/react-table';
 import { FormEvent, Key, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useQuery, useQueryClient } from 'react-query';
@@ -77,14 +77,10 @@ export default () => {
 
     }
   }
-
-
-  function handleEdit(name: any): void {
-    throw new Error('Function not implemented.');
-    const handleEdit = (name) => {
-      console.log(`Editing ${name}`);
-    };
-  }
+  const actionItems = [
+    { label: 'Edit', onClick: (name) => handleEdit(name) },
+    { label: 'Delete', onClick: (name) => handleDelete(name) },
+  ];
 
   return (
     <Grid>
@@ -179,12 +175,9 @@ export default () => {
                   {isCool ? 'Yup' : 'Totally Not!'}
                 </ColoredTd>
                 <Td key={`kebab-menu-${key}`}>
-                  <div className="dropdown">
-                    <div className="dropdown-content">
-                      <button className="dropbtn"></button>
-                      <button onClick={() => handleDelete(name)}>Delete</button>
-                      <button onClick={() => handleEdit(name)}>Edit</button>
-                    </div>
+                  <ActionsColumn items={actionItems} />
+                  <div>
+                    <button onClick={() => handleDelete(name)}>Delete</button>
                   </div>
                 </Td>
               </Tr>
@@ -195,3 +188,7 @@ export default () => {
     </Grid>
   );
 };
+function handleEdit(name: any) {
+  throw new Error('Function not implemented.');
+}
+
