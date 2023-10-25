@@ -77,10 +77,12 @@ export default () => {
 
     }
   }
-  const actionItems = [
-    { label: 'Edit', onClick: (name) => handleEdit(name) },
-    { label: 'Delete', onClick: (name) => handleDelete(name) },
-  ];
+  function generateActionItems(name, handleEdit, handleDelete) {
+    return [
+      { label: 'Edit', onClick: (name) => handleEdit(name) },
+      { label: 'Delete', onClick: (name) => handleDelete(name) },
+    ];
+  }
 
   return (
     <Grid>
@@ -175,10 +177,7 @@ export default () => {
                   {isCool ? 'Yup' : 'Totally Not!'}
                 </ColoredTd>
                 <Td key={`kebab-menu-${key}`}>
-                  <ActionsColumn items={actionItems} />
-                  <div>
-                    <button onClick={() => handleDelete(name)}>Delete</button>
-                  </div>
+                  <ActionsColumn items={generateActionItems(name, handleEdit, handleDelete)} />
                 </Td>
               </Tr>
             ))}
