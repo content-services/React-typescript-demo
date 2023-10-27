@@ -77,7 +77,7 @@ export default () => {
 
     }
   }
-  function generateActionItems(name, handleDelete) {
+  function generateActionItems(name) {
     return [
       { title: 'Delete', onClick: () => handleDelete(name) },
     ];
@@ -176,7 +176,7 @@ export default () => {
                   {isCool ? 'Yup' : 'Totally Not!'}
                 </ColoredTd>
                 <Td key={`kebab-menu-${key}`}>
-                  <ActionsColumn items={generateActionItems(name, handleDelete)} />
+                  <ActionsColumn items={generateActionItems(name)} />
                 </Td>
               </Tr>
             ))}
