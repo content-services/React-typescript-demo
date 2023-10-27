@@ -57,6 +57,9 @@ export default () => {
 
   if (isLoading) return <Loader />;
   function handleDelete(customerId: any): void {
+    function deleteCustomer() {
+      throw new Error('Function not implemented.');
+    }
 
     try {
       deleteCustomer();
@@ -177,7 +180,5 @@ export default () => {
 };
 
 
-function deleteCustomer() {
-  throw new Error('Function not implemented.');
-}
+
 
