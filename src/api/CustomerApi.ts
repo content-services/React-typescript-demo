@@ -1,3 +1,4 @@
+import { Key } from 'react';
 import { callAPI } from './apiUtilities';
 
 export const choosableColors = ['red', 'pink', 'rebeccapurple', 'grey'];
@@ -5,6 +6,7 @@ export const choosableColors = ['red', 'pink', 'rebeccapurple', 'grey'];
 export type Color = typeof choosableColors[number];
 
 export interface Customer {
+
   name: string;
   color: Color; 
   age: number;
@@ -30,6 +32,24 @@ export const addNewCustomer = (customer: Customer) => {
   customers.push(customer);
   return customersSetter(customers);
 };
+
+
+
+export const deleteCustomer = (customerId: Key) => {
+  const customers = customersGetter();
+  const index = customers.findIndex((customer) => customer.name === customerId);
+
+  if (index !== -1) {
+    customers.splice(index, 1);
+    customersSetter(customers);
+    return true; 
+  }
+
+  return false; 
+};
+
+
+
 
 // Super real API calls
 export const getCustomers = () => callAPI(customersGetter);

@@ -1,6 +1,7 @@
 import { Customers } from './CustomerApi';
 
 export const initialCustomers: Customers = [
+  
   {
     name: 'Agnes Carney',
     isCool: true,

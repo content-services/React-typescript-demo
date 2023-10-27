@@ -13,8 +13,8 @@ import {
   Text,
   TextInput,
 } from '@patternfly/react-core';
-import { Caption, TableComposable, Tbody, Th, Thead, Tr } from '@patternfly/react-table';
-import { FormEvent, useState } from 'react';
+import { ActionsColumn, Caption, TableComposable, Tbody, Td, Th, Thead, Tr } from '@patternfly/react-table';
+import { FormEvent, Key, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useQuery, useQueryClient } from 'react-query';
 import { addNewCustomer, choosableColors, Customer, customersGetter, customersSetter, getCustomers, } from 'src/api/CustomerApi';
@@ -56,6 +56,25 @@ export default () => {
   const columnHeaders = ['Name', 'Age', 'Is Cool'];
 
   if (isLoading) return <Loader />;
+  function handleDelete(customerId: any): void {
+    function deleteCustomer() {
+      throw new Error('Function not implemented.');
+    }
+
+    try {
+      deleteCustomer();
+      queryClient.invalidateQueries('customers');
+    } catch (error) {
+      console.error('An error occurred while deleting the customer:', error);
+
+    }
+  }
+  function generateActionItems(name) {
+    return [
+      { title: 'Delete', onClick: () => handleDelete(name) },
+    ];
+  }
+
   return (
     <Grid>
       <GridItem sm={6}>
@@ -133,6 +152,7 @@ export default () => {
               {columnHeaders.map((columnHeader) => (
                 <Th key={columnHeader}>{columnHeader}</Th>
               ))}
+              <Th key="kebab-menu"></Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -147,6 +167,9 @@ export default () => {
                 <ColoredTd color={color} dataLabel='isCool'>
                   {isCool ? 'Yup' : 'Totally Not!'}
                 </ColoredTd>
+                <Td key={`kebab-menu-${key}`}>
+                  <ActionsColumn items={generateActionItems(name)} />
+                </Td>
               </Tr>
             ))}
           </Tbody>
@@ -155,3 +178,7 @@ export default () => {
     </Grid>
   );
 };
+
+
+
+
