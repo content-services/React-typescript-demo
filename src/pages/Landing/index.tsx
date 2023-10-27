@@ -57,17 +57,6 @@ export default () => {
 
   if (isLoading) return <Loader />;
   function handleDelete(customerId: any): void {
-    const deleteCustomer = () => {
-      const customers = customersGetter();
-      const index = customers.findIndex((customer) => customer.name === customerId);
-
-
-      if (index !== -1) {
-        const updatedCustomers = [...customers];
-        updatedCustomers.splice(index, 1);
-        customersSetter(updatedCustomers);
-      }
-    };
 
     try {
       deleteCustomer();
@@ -187,4 +176,8 @@ export default () => {
   );
 };
 
+
+function deleteCustomer() {
+  throw new Error('Function not implemented.');
+}
 
