@@ -77,10 +77,9 @@ export default () => {
 
     }
   }
-  function generateActionItems(name, handleEdit, handleDelete) {
+  function generateActionItems(name, handleDelete) {
     return [
-      { label: 'Edit', onClick: (name) => handleEdit(name) },
-      { label: 'Delete', onClick: (name) => handleDelete(name) },
+      { title: 'Delete', onClick: () => handleDelete(name) },
     ];
   }
 
@@ -177,7 +176,7 @@ export default () => {
                   {isCool ? 'Yup' : 'Totally Not!'}
                 </ColoredTd>
                 <Td key={`kebab-menu-${key}`}>
-                  <ActionsColumn items={generateActionItems(name, handleEdit, handleDelete)} />
+                  <ActionsColumn items={generateActionItems(name, handleDelete)} />
                 </Td>
               </Tr>
             ))}
@@ -187,7 +186,5 @@ export default () => {
     </Grid>
   );
 };
-function handleEdit(name: any) {
-  throw new Error('Function not implemented.');
-}
+
 
