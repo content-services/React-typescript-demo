@@ -17,7 +17,7 @@ import { ActionsColumn, Caption, TableComposable, Tbody, Td, Th, Thead, Tr } fro
 import { FormEvent, Key, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useQuery, useQueryClient } from 'react-query';
-import { addNewCustomer, choosableColors, Customer, customersGetter, customersSetter, getCustomers, } from 'src/api/CustomerApi';
+import { addNewCustomer, choosableColors, Customer, customersGetter, customersSetter, getCustomers, deleteCustomer } from 'src/api/CustomerApi';
 import { ColoredTd } from 'src/components/ColoredTd';
 import Loader from 'src/components/Loader';
 import SnazzyButton from 'src/components/SnazzyButton';
@@ -57,12 +57,9 @@ export default () => {
 
   if (isLoading) return <Loader />;
   function handleDelete(customerId: any): void {
-    function deleteCustomer() {
-      throw new Error('Function not implemented.');
-    }
 
     try {
-      deleteCustomer();
+      deleteCustomer(customerId);
       queryClient.invalidateQueries('customers');
     } catch (error) {
       console.error('An error occurred while deleting the customer:', error);
