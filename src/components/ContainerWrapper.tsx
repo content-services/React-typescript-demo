@@ -30,8 +30,11 @@ export default ({ children }: { children: ReactNode }) => {
   const { darkmode } = useAppContext();
   const classes = useStyles();
 
+  const horizontalAlignClass = darkmode ? classes.horizontalAlignWithDarkmode : classes.horizontalAlign;
+
+
   return (
-    <Grid className={darkmode ? classes.horizontalAlignWithDarkmode : classes.horizontalAlign}>
+    <Grid className={horizontalAlignClass}>
       <Grid className={classes.verticalAlign}>{children}</Grid>
     </Grid>
   );

@@ -1,4 +1,4 @@
-import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from "react";
+import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from 'react';
 
 interface AppContextInterface {
   darkmode: boolean;
@@ -14,7 +14,10 @@ interface Props {
 export const AppContextProvider = ({ children }: Props) => {
   const [darkmode, setDarkmode] = useState<boolean>(false);
 
-  const contextValues = { darkmode, setDarkmode };
+  const storedDarkmode = localStorage.getItem('darkmode');
+  const initialDarkmode = storedDarkmode ? JSON.parse(storedDarkmode) : false;
+
+  const contextValues = { darkmode: initialDarkmode, setDarkmode };
   return <AppContext.Provider value={contextValues}>{children}</AppContext.Provider>;
 };
 
