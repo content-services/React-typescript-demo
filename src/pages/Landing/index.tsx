@@ -25,6 +25,14 @@ import { useAppContext } from 'src/middleware';
 
 
 const useStyles = createUseStyles({
+  darkTable: {
+    background: '#333',
+    color: 'white',
+  },
+  darkModal: {
+    background: 'rgba(0, 0, 0, 0.8)',
+    color: 'white',
+  },
   inlineText: {
     display: 'block',
   },
@@ -33,7 +41,7 @@ const useStyles = createUseStyles({
 export default () => {
   const classes = useStyles();
   const { setDarkmode, darkmode } = useAppContext();
-  const [isDarkMode, setDarkMode] = useState(false);
+  const isDarkMode = true;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newUser, setNewUser] = useState<Partial<Customer>>({ isCool: false });
   const [selectToggle, setSelectToggle] = useState(false);

@@ -20,14 +20,6 @@ const useStyles =
       margin: '0px auto',
       padding: '40px 24px',
     },
-    darkTable: {
-      background: '#333',
-      color: 'white',
-    },
-    darkModal: {
-      background: 'rgba(0, 0, 0, 0.8)',
-      color: 'white',
-    },
   });
 
 
