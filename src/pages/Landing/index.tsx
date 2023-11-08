@@ -41,7 +41,7 @@ const useStyles = createUseStyles({
 export default () => {
   const classes = useStyles();
   const { setDarkmode, darkmode } = useAppContext();
-  const isDarkMode = true;
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newUser, setNewUser] = useState<Partial<Customer>>({ isCool: false });
   const [selectToggle, setSelectToggle] = useState(false);
@@ -98,7 +98,7 @@ export default () => {
         title='Add Customer'
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        className={isDarkMode ? 'dark-mode-modal' : ''}
+        className={`darkTable ${darkmode ? classes.darkModal : ''}`}
       >
         <Form onSubmit={onSubmit}>
           <Grid className={classes.inlineText}>
@@ -152,7 +152,7 @@ export default () => {
         </Form>
       </Modal>
       <Grid>
-        <TableComposable aria-label='Simple table' variant='compact' className={`table-composable ${isDarkMode ? 'dark-mode-table' : ''}`}>
+        <TableComposable aria-label='Simple table' variant='compact' className={darkmode ? classes.darkTable : ''}>
           <Caption>Here is a list of your customers:</Caption>
           <Thead>
             <Tr>
