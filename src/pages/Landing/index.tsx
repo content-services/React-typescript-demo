@@ -106,7 +106,7 @@ export default () => {
         className={`darkTable ${darkmode ? classes.darkModal : ''}`}
       >
         <Form onSubmit={onSubmit}>
-          <Grid className={classes.inlineText}>
+          <Grid className={`${classes.inlineText} ${darkmode ? 'dark-mode' : ''}`}>
             <Text>Name</Text>
             <TextInput
               onChange={(value) => setNewUser({ ...newUser, name: value })}
@@ -115,7 +115,7 @@ export default () => {
               type='text'
             />
           </Grid>
-          <Grid className={classes.inlineText}>
+          <Grid className={`${classes.inlineText} ${darkmode ? 'dark-mode' : ''}`}>
             <Text>Age</Text>
             <TextInput
               onChange={(value) => setNewUser({ ...newUser, age: Number(value) })}
@@ -124,7 +124,7 @@ export default () => {
               type='number'
             />
           </Grid>
-          <Grid className={classes.inlineText}>
+          <Grid className={`${classes.inlineText} ${darkmode ? 'dark-mode' : ''}`}>
             <Text>Color</Text>
             <Select
               onToggle={() => setSelectToggle(!selectToggle)}
@@ -171,13 +171,13 @@ export default () => {
           <Tbody>
             {data?.map(({ name, age, color, isCool }, key: number) => (
               <Tr key={name + key}>
-                <ColoredTd color={color} dataLabel='name'>
+                <ColoredTd color={color + '!important'} dataLabel='name'>
                   {name}
                 </ColoredTd>
-                <ColoredTd color={color} dataLabel='age'>
+                <ColoredTd color={color + '!important'} dataLabel='age'>
                   {age}
                 </ColoredTd>
-                <ColoredTd color={color} dataLabel='isCool'>
+                <ColoredTd color={color + '!important'} dataLabel='isCool'>
                   {isCool ? 'Yup' : 'Totally Not!'}
                 </ColoredTd>
                 <Td key={`kebab-menu-${key}`}>
