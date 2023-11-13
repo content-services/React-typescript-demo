@@ -150,7 +150,7 @@ export default () => {
             id='isCool'
             onChange={(value) => setNewUser({ ...newUser, isCool: value })}
             isChecked={newUser.isCool}
-            style={{ color: darkmode ? 'white' : 'black' }}
+            className={darkmode ? 'dark-mode' : ''}
           />
           <SnazzyButton isSnazzy>
             Submit
