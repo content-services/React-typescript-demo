@@ -13,6 +13,7 @@ import {
   Text,
   TextInput,
 } from '@patternfly/react-core';
+
 import { ActionsColumn, Caption, TableComposable, Tbody, Td, Th, Thead, Tr } from '@patternfly/react-table';
 import { FormEvent, Key, useState } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -33,6 +34,10 @@ const useStyles = createUseStyles({
     background: 'rgba(0, 0, 0, 0.8)',
     color: 'white',
   },
+  darkCaption: {
+    color: 'white',
+    background: '#333',
+  },
   inlineText: {
     display: 'block',
   },
@@ -41,7 +46,7 @@ const useStyles = createUseStyles({
 export default () => {
   const classes = useStyles();
   const { setDarkmode, darkmode } = useAppContext();
-
+  console.log('darkmode:', darkmode);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newUser, setNewUser] = useState<Partial<Customer>>({ isCool: false });
   const [selectToggle, setSelectToggle] = useState(false);
@@ -145,6 +150,7 @@ export default () => {
             id='isCool'
             onChange={(value) => setNewUser({ ...newUser, isCool: value })}
             isChecked={newUser.isCool}
+            style={{ color: darkmode ? 'white' : 'black' }}
           />
           <SnazzyButton isSnazzy>
             Submit
@@ -152,8 +158,8 @@ export default () => {
         </Form>
       </Modal>
       <Grid>
-        <TableComposable aria-label='Simple table' variant='compact' className={darkmode ? classes.darkTable : ''}>
-          <Caption>Here is a list of your customers:</Caption>
+        <TableComposable aria-label='Simple table' variant='compact' className={darkmode ? classes.darkTable : ''} >
+          <div className={darkmode ? classes.darkCaption : ''}>Here is a list of your customers</div>
           <Thead>
             <Tr>
               {columnHeaders.map((columnHeader) => (
