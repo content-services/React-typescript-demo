@@ -38,12 +38,6 @@ const useStyles = createUseStyles({
     color: 'white',
     background: '#333',
   },
-  darkLabel: {
-    color: 'white',
-  },
-  darkCheck: {
-    color: 'white',
-  },
   inlineText: {
     display: 'block',
   },
@@ -154,11 +148,15 @@ export default () => {
           <Checkbox
             label='Is this person cool?'
             id='isCool'
-            onChange={(value) => setNewUser({ ...newUser, isCool: value })}
+            onChange={(value) => {
+              setNewUser({ ...newUser, isCool: value });
+              const label = document.querySelector('label[for="isCool"]');
+              if (label) {
+                label.classList.toggle('darkLabel', value);
+              }
+            }}
             isChecked={newUser.isCool}
-            className={darkmode ? `${classes.darkCheck} ${newUser.isCool ? classes.darkLabel : ''}` : ''}
           />
-
           <SnazzyButton isSnazzy>
             Submit
           </SnazzyButton>
