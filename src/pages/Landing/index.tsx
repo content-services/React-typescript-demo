@@ -38,6 +38,12 @@ const useStyles = createUseStyles({
     color: 'white',
     background: '#333',
   },
+  darkLabel: {
+    color: 'white',
+  },
+  darkCheck: {
+    color: 'white',
+  },
   inlineText: {
     display: 'block',
   },
@@ -106,7 +112,7 @@ export default () => {
         className={`darkTable ${darkmode ? classes.darkModal : ''}`}
       >
         <Form onSubmit={onSubmit}>
-          <Grid className={`${classes.inlineText} ${darkmode ? 'dark-mode' : ''}`}>
+          <Grid className={classes.inlineText}>
             <Text>Name</Text>
             <TextInput
               onChange={(value) => setNewUser({ ...newUser, name: value })}
@@ -115,7 +121,7 @@ export default () => {
               type='text'
             />
           </Grid>
-          <Grid className={`${classes.inlineText} ${darkmode ? 'dark-mode' : ''}`}>
+          <Grid className={classes.inlineText}>
             <Text>Age</Text>
             <TextInput
               onChange={(value) => setNewUser({ ...newUser, age: Number(value) })}
@@ -124,7 +130,7 @@ export default () => {
               type='number'
             />
           </Grid>
-          <Grid className={`${classes.inlineText} ${darkmode ? 'dark-mode' : ''}`}>
+          <Grid className={classes.inlineText}>
             <Text>Color</Text>
             <Select
               onToggle={() => setSelectToggle(!selectToggle)}
@@ -150,8 +156,9 @@ export default () => {
             id='isCool'
             onChange={(value) => setNewUser({ ...newUser, isCool: value })}
             isChecked={newUser.isCool}
-            className={darkmode ? 'dark-mode' : ''}
+            className={darkmode ? `${classes.darkCheck} ${newUser.isCool ? classes.darkLabel : ''}` : ''}
           />
+
           <SnazzyButton isSnazzy>
             Submit
           </SnazzyButton>
