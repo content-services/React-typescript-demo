@@ -21,8 +21,6 @@ const useStyles =
       padding: '40px 24px',
     },
   });
-
-
 export interface GridPropsWithDarkmode extends GridProps {
   darkmode: boolean;
 }
