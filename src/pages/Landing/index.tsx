@@ -13,6 +13,7 @@ import {
   Text,
   TextInput,
 } from '@patternfly/react-core';
+
 import { ActionsColumn, Caption, TableComposable, Tbody, Td, Th, Thead, Tr } from '@patternfly/react-table';
 import { FormEvent, Key, useState } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -25,6 +26,24 @@ import { useAppContext } from 'src/middleware';
 
 
 const useStyles = createUseStyles({
+  darkTable: {
+    background: '#333',
+    color: 'white',
+  },
+  darkModal: {
+    background: 'rgba(0, 0, 0, 0.8)',
+    color: 'white',
+  },
+  darkCaption: {
+    color: 'white',
+    background: '#333',
+  },
+  darkCheck: {
+    '& label': {
+      color: 'white',
+    }
+  },
+
   inlineText: {
     display: 'block',
   },
@@ -33,6 +52,7 @@ const useStyles = createUseStyles({
 export default () => {
   const classes = useStyles();
   const { setDarkmode, darkmode } = useAppContext();
+  console.log('darkmode:', darkmode);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newUser, setNewUser] = useState<Partial<Customer>>({ isCool: false });
   const [selectToggle, setSelectToggle] = useState(false);
@@ -89,6 +109,7 @@ export default () => {
         title='Add Customer'
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        className={`darkTable ${darkmode ? classes.darkModal : ''}`}
       >
         <Form onSubmit={onSubmit}>
           <Grid className={classes.inlineText}>
@@ -135,6 +156,7 @@ export default () => {
             id='isCool'
             onChange={(value) => setNewUser({ ...newUser, isCool: value })}
             isChecked={newUser.isCool}
+            className={darkmode ? classes.darkCheck : ''}
           />
           <SnazzyButton isSnazzy>
             Submit
@@ -142,8 +164,8 @@ export default () => {
         </Form>
       </Modal>
       <Grid>
-        <TableComposable aria-label='Simple table' variant='compact'>
-          <Caption>Here is a list of your customers:</Caption>
+        <TableComposable aria-label='Simple table' variant='compact' className={darkmode ? classes.darkTable : ''} >
+          <div className={darkmode ? classes.darkCaption : ''}>Here is a list of your customers</div>
           <Thead>
             <Tr>
               {columnHeaders.map((columnHeader) => (
@@ -155,13 +177,13 @@ export default () => {
           <Tbody>
             {data?.map(({ name, age, color, isCool }, key: number) => (
               <Tr key={name + key}>
-                <ColoredTd color={color} dataLabel='name'>
+                <ColoredTd color={color + '!important'} dataLabel='name'>
                   {name}
                 </ColoredTd>
-                <ColoredTd color={color} dataLabel='age'>
+                <ColoredTd color={color + '!important'} dataLabel='age'>
                   {age}
                 </ColoredTd>
-                <ColoredTd color={color} dataLabel='isCool'>
+                <ColoredTd color={color + '!important'} dataLabel='isCool'>
                   {isCool ? 'Yup' : 'Totally Not!'}
                 </ColoredTd>
                 <Td key={`kebab-menu-${key}`}>
