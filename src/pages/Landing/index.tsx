@@ -39,10 +39,17 @@ export default () => {
   // const queryClient = useQueryClient();
 
   // Queries
-  const { isLoading, data } = useQuery(
+  const { isLoading, data, error } = useQuery(
     'customers',
     getCustomers,
-    // TODO: Stretch - Use the options object to handle errors.
+    {
+      onError: (err) => {
+        console.error('Error occurred while fetching customers:', err);
+      },
+      retry: 3,
+      refetchOnWindowFocus: false,
+
+    }
   );
 
   const onSubmit = (e: FormEvent<Element>) => {

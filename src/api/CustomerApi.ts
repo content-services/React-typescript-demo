@@ -14,27 +14,27 @@ export interface Customer {
 export type Customers = Array<Customer>;
 
 // Local storage "DAO layer" Getter/Setters
-export const customersSetter = (customers: Customers | undefined) => {
+export const customersSetter = (customers: Customers | undefined): Customers | undefined => {
   localStorage.setItem('customers', JSON.stringify(customers));
   return customers;
 };
 
 export const customersGetter = (): Customers => {
   const customers = localStorage.getItem('customers');
-  if (customers) return [...JSON.parse(customers)];
+  if (customers) return JSON.parse(customers);
   return [];
 };
 
-export const addNewCustomer = (customer: Customer) => {
+export const addNewCustomer = (customer: Customer): Customers | undefined => {
   const customers = customersGetter();
   customers.push(customer);
   return customersSetter(customers);
 };
 
 // Super real API calls
-export const getCustomers = () => callAPI(customersGetter);
+export const getCustomers = () => callAPI(customersGetter, 0.7);
 
 export const postCustomers = (customers: Array<Customer> | undefined) => () =>
-  callAPI(() => customersSetter(customers));
+  callAPI(() => customersSetter(customers), 0.7);
 
-export const postNewCustomer = (customer: Customer) => callAPI(() => addNewCustomer(customer));
+export const postNewCustomer = (customer: Customer) => callAPI(() => addNewCustomer(customer), 0.7);
