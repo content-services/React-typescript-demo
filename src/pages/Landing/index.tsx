@@ -47,7 +47,6 @@ export default () => {
         console.error('Error occurred while fetching customers:', err);
       },
       retry: 3,
-      refetchOnWindowFocus: false,
 
     }
   );
