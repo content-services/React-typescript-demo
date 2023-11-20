@@ -52,7 +52,7 @@ export const deleteCustomer = (customerId: Key) => {
 
 
 // Super real API calls
-export const getCustomers = () => callAPI(customersGetter);
+export const getCustomers = () => callAPI(customersGetter, 0.7);
 
 export const postCustomers = (customers: Array<Customer> | undefined) => () =>
   callAPI(() => customersSetter(customers));
