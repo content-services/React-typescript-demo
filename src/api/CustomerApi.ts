@@ -1,7 +1,12 @@
 import { callAPI } from './apiUtilities';
 
 export const choosableColors = ['red', 'pink', 'rebeccapurple', 'grey'] as const;
+
 export type Color = typeof choosableColors[number];
+
+export function isColor(value): value is Color {
+  return choosableColors.includes(value)
+}
 
 export interface Customer {
   name: string;

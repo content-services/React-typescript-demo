@@ -17,7 +17,7 @@ import { Caption, TableComposable, Tbody, Th, Thead, Tr } from '@patternfly/reac
 import { FormEvent, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useQuery } from 'react-query';
-import { choosableColors, Customer, getCustomers } from 'src/api/CustomerApi';
+import { choosableColors, Color, Customer, getCustomers, isColor } from 'src/api/CustomerApi';
 import { ColoredTd } from 'src/components/ColoredTd';
 import Loader from 'src/components/Loader';
 import { useAppContext } from 'src/middleware';
@@ -95,8 +95,7 @@ export default () => {
               onToggle={() => setSelectToggle(!selectToggle)}
               isOpen={selectToggle}
               onSelect={(_e, value) => {
-                if (typeof value === 'string')
-                  // TODO: Fix this when creating the new Color type
+                if (isColor(value))
                   setNewUser({ ...newUser, color: value });
                 setSelectToggle(false);
               }}
@@ -106,7 +105,7 @@ export default () => {
               selections={newUser?.color}
               direction={SelectDirection.up}
             >
-              {choosableColors.map((color: string, index) => (
+              {choosableColors.map((color: Color, index) => (
                 <SelectOption style={{ color }} key={index} value={color} />
               ))}
             </Select>
